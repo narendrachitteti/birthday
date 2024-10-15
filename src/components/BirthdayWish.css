@@ -1,0 +1,50 @@
+/* src/components/BirthdayWish.css */
+.card {
+    border: 2px solid #f39c12;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+    max-width: 90%; /* Ensure card doesn't take full width on mobile */
+    margin: auto; /* Center card */
+  }
+  
+  .birthday-header {
+    font-size: 2em;
+    color: #e74c3c; /* A warm color for the header */
+    margin-bottom: 10px;
+  }
+  
+  .birthday-message {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .love-quote {
+    font-style: italic;
+    color: #3498db; /* A calming blue color for quotes */
+    margin: 10px 0;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .birthday-image {
+    width: 100%; /* Ensure images are responsive */
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .slick-dots {
+    bottom: 10px; /* Position dots at the bottom of the carousel */
+  }
+  
+  .slick-slide {
+    display: flex; /* Center the images */
+    justify-content: center;
+  }
+  
