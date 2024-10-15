@@ -1,5 +1,6 @@
 /* src/components/BirthdayWish.css */
 .card {
+    position: relative; /* Position relative for balloons */
     border: 2px solid #f39c12;
     border-radius: 15px;
     padding: 20px;
@@ -9,6 +10,7 @@
     transition: transform 0.3s ease;
     max-width: 90%; /* Ensure card doesn't take full width on mobile */
     margin: auto; /* Center card */
+    overflow: hidden; /* Hide overflow for animations */
   }
   
   .birthday-header {
@@ -46,5 +48,81 @@
   .slick-slide {
     display: flex; /* Center the images */
     justify-content: center;
+  }
+  
+  /* Balloon Styles */
+  .balloon-container {
+    position: absolute;
+    bottom: 0; /* Position balloons at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    z-index: -1; /* Ensure balloons are behind other elements */
+  }
+/* src/components/BirthdayWish.css */
+/* Existing styles remain unchanged */
+
+.slider-item {
+    position: relative; /* Relative positioning for the slider item */
+  }
+  
+  .birthday-image {
+    width: 100%; /* Ensure images are responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional styling */
+  }
+  
+  .animation-gif {
+    position: absolute; /* Absolute positioning for overlay */
+    top: 10%; /* Adjust position as needed */
+    left: 30%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    width: 80%; /* Adjust width to fit */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1; /* Ensure GIF is on top of images */
+    pointer-events: none; /* Make sure GIF doesn't interfere with clicks */
+  }
+  
+  /* Other styles remain unchanged */
+    
+  .balloon {
+    width: 40px; /* Balloon width for mobile */
+    height: 60px; /* Balloon height for mobile */
+    border-radius: 30px;
+    position: relative;
+    margin: 0 5px; /* Reduced margin for better fit */
+    animation: fly 5s ease-in-out infinite; /* Floating animation */
+    opacity: 0.7; /* Slight transparency for a nicer look */
+  }
+  
+  /* Different colors for each balloon */
+  .balloon1 { background-color: #ff4757; } /* Red */
+  .balloon2 { background-color: #1e90ff; } /* Blue */
+  .balloon3 { background-color: #2ed573; } /* Green */
+  .balloon4 { background-color: #ffa502; } /* Yellow */
+  .balloon5 { background-color: #ff6348; } /* Tomato */
+  
+  /* Flying Animation */
+  @keyframes fly {
+    0% {
+      transform: translateY(0); /* Start at the bottom */
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1; /* Make them fully visible halfway */
+    }
+    100% {
+      transform: translateY(-100vh); /* Move to the top of the screen */
+      opacity: 0; /* Fade out as they go up */
+    }
+  }
+  
+  /* Media Query for better adjustments on smaller screens */
+  @media (max-width: 600px) {
+    .balloon {
+      width: 30px; /* Smaller balloon width for mobile */
+      height: 50px; /* Smaller balloon height for mobile */
+    }
   }
   
