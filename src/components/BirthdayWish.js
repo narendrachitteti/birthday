@@ -23,7 +23,6 @@ const BirthdayWish = ({ images, message }) => {
 
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
-  const [isPlaying, setIsPlaying] = useState(false); // Track audio playback status
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,7 +40,7 @@ const BirthdayWish = ({ images, message }) => {
       audioRef.current.play().catch((error) => {
         console.error("Error playing audio:", error);
       });
-      
+
       // Unmute after a short delay
       const timeoutId = setTimeout(() => {
         audioRef.current.muted = false; // Unmute the audio
