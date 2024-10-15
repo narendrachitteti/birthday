@@ -83,6 +83,23 @@
     z-index: 1; /* Ensure GIF is on top of images */
     pointer-events: none; /* Make sure GIF doesn't interfere with clicks */
   }
+  /* src/components/BirthdayWish.css */
+
+.play-audio-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #ff5722; /* Orange background */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .play-audio-button:hover {
+    background-color: #e64a19; /* Darker orange on hover */
+  }
   
   /* Other styles remain unchanged */
     

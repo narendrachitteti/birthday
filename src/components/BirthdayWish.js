@@ -1,11 +1,14 @@
 // src/components/BirthdayWish.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Slider from 'react-slick'; // Import the Slider component
 import Confetti from 'react-confetti'; // Import the confetti library
 import './BirthdayWish.css'; // Import your CSS for styling
 import animation from '../Images/animation.gif'; // Import your animation GIF
+import happybirthday from '../Images/happybirthday.mp3'; // Import your audio file
 
 const BirthdayWish = ({ images, message }) => {
+  const audioRef = useRef(null); // Create a ref for the audio element
+
   const allImages = images; // Keep only the regular images
 
   const settings = {
@@ -20,6 +23,7 @@ const BirthdayWish = ({ images, message }) => {
 
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
+  const [isPlaying, setIsPlaying] = useState(false); // Track audio playback status
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,6 +33,22 @@ const BirthdayWish = ({ images, message }) => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Play the audio when the component mounts
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play().catch((error) => {
+        console.error("Error playing audio:", error);
+      });
+      
+      // Unmute after a short delay
+      const timeoutId = setTimeout(() => {
+        audioRef.current.muted = false; // Unmute the audio
+      }, 1000); // Delay to allow autoplay
+
+      return () => clearTimeout(timeoutId); // Cleanup the timeout
+    }
   }, []);
 
   return (
@@ -55,6 +75,8 @@ const BirthdayWish = ({ images, message }) => {
         <div className="balloon balloon4"></div>
         <div className="balloon balloon5"></div>
       </div>
+      {/* Hidden audio element with muted attribute initially */}
+      <audio ref={audioRef} src={happybirthday} preload="auto" muted />
     </div>
   );
 };
